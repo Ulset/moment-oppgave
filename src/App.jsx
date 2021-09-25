@@ -2,6 +2,11 @@ import './App.css';
 import {useState} from "react";
 import {ListElement} from "./components/ListElement";
 import {HeaderComponent} from "./components/HeaderComponent";
+import {UserEditor} from "./components/components/UserEditor";
+
+function NewElement() {
+    return null;
+}
 
 function App() {
     const startList = [
@@ -16,20 +21,21 @@ function App() {
 
 
     //Rendering
-    let userJsx = userList.map((el, index) => {
+    let outputJsx = userList.map((el, index) => {
         return <ListElement key={index} userEl={el}/>
     })
 
     if(addNewFlag) {
-        const addNewComponent = <ListElement key={"newUser"} editStartFlag={true}/>
-        userJsx = [addNewComponent, ...userJsx]
+        // If a new user is being added, append a empty UserEditor
+        const addNewComponent = <UserEditor key={"newUser"} />
+        outputJsx = [addNewComponent, ...outputJsx]
     }
 
     return (
         <div id={"app_container"} className={"container"}>
             <ul className={"list-group rounded"}>
                 <HeaderComponent addNewFunc={()=>{setAddNewFlag(true)}}/>
-                {userJsx}
+                {outputJsx}
             </ul>
         </div>
     );

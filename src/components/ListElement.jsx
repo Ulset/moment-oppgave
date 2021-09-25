@@ -1,25 +1,13 @@
 import {useState} from "react";
+import {UserEditor} from "./components/UserEditor";
 
 export function ListElement({userEl, editStartFlag}) {
     const [editFLag, setEditFLag] = useState(!!editStartFlag);
 
-    let {name, lastname} = userEl ? userEl : "";
-    if(!userEl){
-        [name, lastname] = ["", ""]
-    }
+    let {name, lastname} = userEl;
 
     if(editFLag){
-        return <li className={"list-group-item"}>
-            <div className={"row"}>
-                <div className={"col"}>1</div>
-                <div className={"col"}>2</div>
-
-            </div>
-            <div className={"row"}>
-                <div className={"col"}>Noe</div>
-                <div className={"col"}>Annet</div>
-            </div>
-        </li>
+        return <UserEditor />
     }
 
     return (
