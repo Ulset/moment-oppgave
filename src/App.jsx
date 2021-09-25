@@ -1,6 +1,7 @@
 import './App.css';
 import {useState} from "react";
 import {ListElement} from "./components/ListElement";
+import {HeaderComponent} from "./components/HeaderComponent";
 
 function App() {
     const startList = [
@@ -27,12 +28,7 @@ function App() {
     return (
         <div id={"app_container"} className={"container"}>
             <ul className={"list-group rounded"}>
-                <li className={"list-group-item grey-color"}>
-                    <div className={"row"}>
-                        <div className={"col-sm-8"}>Navn</div>
-                        <div className={"col text-right"} onClick={()=>{setAddNewFlag(true)}}>Legg til</div>
-                    </div>
-                </li>
+                <HeaderComponent addNewFunc={()=>{setAddNewFlag(true)}}/>
                 {userJsx}
             </ul>
         </div>
