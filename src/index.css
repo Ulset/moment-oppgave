@@ -1,15 +1,21 @@
-body {
-  background-color: #efefef;
+#root {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#app_container {
+  width: 1000px;
 }
 
 .container {
-  width: 800px;
-  margin: 50px auto auto;
-  box-shadow: 3px 3px 10px 5px rgba(0,0,0,0.12);
-  border-radius: 3px;
-  overflow: hidden;
+  width: 1000px;
 }
 
 .row {
   height: 30px;
+}
+
+.grey-color {
+  background-color: #f3f3f3;
 }

@@ -9,13 +9,15 @@ export function ListElement({userEl, editStartFlag}) {
     }
 
     if(editFLag){
-        return <div>Jeg redigeres!</div>
+        return <li className={"list-group-item"}>Jeg redigeres!</li>
     }
 
     return (
-        <div className={"row bg-light"}>
-            <div className={"col"}>{name} {lastname}</div>
-            <div className={"col text-right"} onClick={()=>{setEditFLag(true)}}>rediger</div>
-        </div>
+        <li className={"list-group-item"}>
+            <div className={"row"}>
+                <div className={"col"}>{name} {lastname}</div>
+                <div className={"col text-right"} onClick={()=>{setEditFLag(true)}}>rediger</div>
+            </div>
+        </li>
     );
 }
