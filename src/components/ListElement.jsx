@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {UserEditor} from "./components/UserEditor";
+import {UserEditor} from "./UserEditor";
 
 export function ListElement({userEl, deleteFunc, changeUserElFunc}) {
     const [editFLag, setEditFLag] = useState(false);

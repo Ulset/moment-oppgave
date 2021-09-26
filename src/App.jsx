@@ -2,7 +2,7 @@ import './App.css';
 import {useState} from "react";
 import {ListElement} from "./components/ListElement";
 import {HeaderComponent} from "./components/HeaderComponent";
-import {UserEditor} from "./components/components/UserEditor";
+import {UserEditor} from "./components/UserEditor";
 
 
 function App() {
