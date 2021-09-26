@@ -7,9 +7,9 @@ import {UserEditor} from "./components/components/UserEditor";
 
 function App() {
     const startList = [
-        {name: "Sander", lastname: "Ulset", phone: "45882362"},
-        {name: "Andrea", lastname: "Elvegård", phone: "12345678"},
-        {name: "Ulrik", lastname: "Lager", phone: "87654321"}
+        {name: "Sander", lastname: "Ulset", phone: "45882362", id: 0},
+        {name: "Andrea", lastname: "Elvegård", phone: "12345678", id:1},
+        {name: "Ulrik", lastname: "Lager", phone: "87654321", id: 2}
     ]
 
     //Setup states and functions
@@ -17,34 +17,37 @@ function App() {
     const [addNewFlag, setAddNewFlag] = useState(false);
 
     const addNewUser = ({name, lastname, phone}) => {
-        setUserList([...userList, {name, lastname, phone}]);
+        let id = userList.length
+        while (userList.map(e => e.id).includes(id)){
+            id++;
+        }
+        setUserList([...userList, {name, lastname, phone, id}]);
         setAddNewFlag(false);
     }
 
-    const deleteUser = ({name, lastname, phone}) => {
-        let newList = userList;
+    const deleteUser = (userEl) => {
+        const {id} = userEl;
         userList.forEach((el, index) => {
-            if(name === el.name && lastname === el.lastname && phone === el.phone){
-                newList.splice(index, 1)
+            if(id === el.id){
+                userList.splice(index, 1)
             }
         })
-        setUserList([...newList])
+        setUserList([...userList])
     }
 
     const changeUserInfo = (oldUserEl, newUserEl) => {
-        let newList = userList;
-        const {name, lastname, phone} = oldUserEl;
+        const {id} = oldUserEl;
         userList.forEach((el, index) => {
-            if(name === el.name && lastname === el.lastname && phone === el.phone){
-                newList[index] = newUserEl;
+            if(id === el.id){
+                userList[index] = {id: el.id, ...newUserEl};
             }
         })
-        setUserList([...newList])
+        setUserList([...userList])
     }
 
     //Rendering
     let outputJsx = userList.map((el) => {
-        return <ListElement key={el.name} userEl={el} deleteFunc={deleteUser} changeUserElFunc={changeUserInfo}/>
+        return <ListElement key={el.id} userEl={el} deleteFunc={deleteUser} changeUserElFunc={changeUserInfo}/>
     })
 
     if(addNewFlag) {
