@@ -56,7 +56,7 @@ function App() {
     return (
         <div id={"app_container"} className={"container"}>
             <ul className={"list-group rounded"}>
-                <HeaderComponent addNewFunc={()=>{setAddNewFlag(true)}}/>
+                <HeaderComponent addNewFlag={addNewFlag} setAddNewFlag={setAddNewFlag}/>
                 {outputJsx}
             </ul>
         </div>
