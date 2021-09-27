@@ -1,4 +1,3 @@
-import './App.css';
 import {useState} from "react";
 import {ListElement} from "./components/ListElement";
 import {HeaderComponent} from "./components/HeaderComponent";
